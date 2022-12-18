@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 // config
-import { breakfastImages, mainImages, orderImages } from "@/config/home_config";
+import { breakfastImages, comboImages, orderImages } from "@/config/home_config";
 
 export const productSlice = createSlice({
     name: "product",
     initialState: {
         breakfast: breakfastImages,
-        main: mainImages,
+        combo: comboImages,
         order: orderImages,
     },
     reducers: {

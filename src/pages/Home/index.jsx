@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { mainImages } from "@/config/home_config";
+import { comboImages } from "@/config/home_config";
 // styled
 import FakeBody from "./styles/FakeBody.styled";
 import CarouselWrap from "./styles/CarouselWrap.styled";
@@ -8,7 +8,7 @@ import CarouselWrap from "./styles/CarouselWrap.styled";
 import DragTab from "@/components/DragTab";
 
 function Home() {
-    const [data, setData] = useState(mainImages);
+    const [data, setData] = useState(comboImages);
     function itemClickHandler(event, id) {
         setData((pre) => {
             return pre.map((item) => {

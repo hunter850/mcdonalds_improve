@@ -68,7 +68,7 @@ export const ProductItem = styled.li`
 
 export const ProductCard = styled.div`
     width: 100%;
-    border: 2px solid #6d6;
+    border: 2px solid ${({ selected = false }) => (selected ? "#6d6" : "transparent")};
     border-radius: 12px;
     padding: 12px;
     .counter {

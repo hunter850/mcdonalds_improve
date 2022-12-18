@@ -43,7 +43,7 @@ export const categoryImages = [
     { id: 3, name: "單點", image: oneOrder, value: "order" },
 ];
 
-export const mainImages = [
+export const comboImages = [
     { id: 1, name: "大麥克", image: bigMc, inCart: false, count: 0 },
     { id: 2, name: "雙層牛肉吉事堡", image: doubleCheeseBurger, inCart: false, count: 0 },
     { id: 3, name: "BLT 安格斯牛肉堡", image: bltAngus, inCart: false, count: 0 },

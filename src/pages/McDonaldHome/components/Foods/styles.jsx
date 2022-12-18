@@ -1,5 +1,6 @@
 import { Global, css } from "@emotion/react";
 import styled from "@emotion/styled";
+import Checkbox from "@mui/material/Checkbox";
 
 export function FoodsGlobalStyles() {
     return (
@@ -71,19 +72,58 @@ export const ProductCard = styled.div`
     border: 2px solid ${({ selected = false }) => (selected ? "#6d6" : "transparent")};
     border-radius: 12px;
     padding: 12px;
+    position: relative;
+    pointer-events: none;
+    overflow: hidden;
+    &:hover {
+        border: 2px solid ${({ selected = false }) => (selected ? "#6d6" : "#6d66")};
+    }
+    .image_wrap {
+        pointer-events: auto;
+    }
     .counter {
         height: 36px;
+    }
+`;
+
+export const ProductCheck = styled.input`
+    pointer-events: auto;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const StyledCheckbox = styled(Checkbox)`
+    pointer-events: auto;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    &.Mui-checked {
+        color: #6d6;
     }
 `;
 
 export const ProductImageWrap = styled.div`
     width: 100%;
     aspect-ratio: 16 / 9;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    &:hover {
+        transform: scale(1.1);
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+
     > img {
         width: 100%;
         height: 100%;
         object-fit: contain;
         object-position: center center;
+        user-select: none;
     }
 `;
 

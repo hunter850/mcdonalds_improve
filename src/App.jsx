@@ -4,6 +4,8 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import AllProvider from "./contexts/AllProviders";
 // import Home from "./pages/Home";
 import McDonaldHome from "./pages/McDonaldHome";
+import SelectCombo from "./pages/SelectCombo";
+// styled
 import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
                 <AllProvider>
                     <Routes>
                         <Route path="/" element={<McDonaldHome />} />
+                        <Route path="/select_combo" element={<SelectCombo />} />
                     </Routes>
                 </AllProvider>
             </HashRouter>

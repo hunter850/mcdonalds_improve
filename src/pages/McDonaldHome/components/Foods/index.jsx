@@ -15,6 +15,8 @@ import {
     ProductList,
     ProductItem,
     ProductCard,
+    ProductCheck,
+    StyledCheckbox,
     ProductImageWrap,
     ProductTitle,
 } from "./styles";
@@ -59,22 +61,21 @@ function Foods(props) {
     function changeCountHanlder(event, id, num) {
         const selectedCategory = categoryImages.find((item) => item.name === title);
         const nowProduct = productArray[0];
-        dispatch(
-            updateProductValue({
-                key: selectedCategory.value,
-                value: nowProduct.map((item) => {
-                    if (item.id === id) {
-                        return item.count + num < 0
-                            ? { ...item, count: 0 }
-                            : item.count + num > 999
-                            ? { ...item, count: 999 }
-                            : { ...item, count: item.count + num };
-                    } else {
-                        return item;
-                    }
-                }),
-            })
-        );
+        const targetItem = nowProduct.find((item) => item.id === id);
+        if (targetItem.count + num >= 0 && targetItem.count + num <= 999) {
+            dispatch(
+                updateProductValue({
+                    key: selectedCategory.value,
+                    value: nowProduct.map((item) => {
+                        if (item.id === id) {
+                            return { ...item, count: item.count + num };
+                        } else {
+                            return item;
+                        }
+                    }),
+                })
+            );
+        }
     }
     return (
         <Fragment>
@@ -97,7 +98,14 @@ function Foods(props) {
                                     {items.map((item) => (
                                         <ProductItem key={item.id}>
                                             <ProductCard selected={item.inCart}>
-                                                <ProductImageWrap onClick={(event) => selectHandler(event, item.id)}>
+                                                <StyledCheckbox
+                                                    checked={item.inCart}
+                                                    onClick={(event) => selectHandler(event, item.id)}
+                                                />
+                                                <ProductImageWrap
+                                                    onClick={(event) => selectHandler(event, item.id)}
+                                                    className="image_wrap"
+                                                >
                                                     <img src={item.image} alt={item.name} draggable="false" />
                                                 </ProductImageWrap>
                                                 <ProductTitle>{item.name}</ProductTitle>

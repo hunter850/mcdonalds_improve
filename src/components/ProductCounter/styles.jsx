@@ -5,6 +5,7 @@ export const CounterWrap = styled.div`
     justify-content: center;
     width: 100%;
     height: 100%;
+    pointer-events: all;
 `;
 
 export const StyledButton = styled.button`

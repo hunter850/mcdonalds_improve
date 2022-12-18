@@ -5,6 +5,7 @@ import AllProvider from "./contexts/AllProviders";
 // import Home from "./pages/Home";
 import McDonaldHome from "./pages/McDonaldHome";
 import SelectCombo from "./pages/SelectCombo";
+import SelectOneOrder from "./pages/SelectOneOrder";
 // styled
 import GlobalStyles from "./styles/GlobalStyles";
 
@@ -17,6 +18,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<McDonaldHome />} />
                         <Route path="/select_combo" element={<SelectCombo />} />
+                        <Route path="/select_one_order" element={<SelectOneOrder />} />
                     </Routes>
                 </AllProvider>
             </HashRouter>

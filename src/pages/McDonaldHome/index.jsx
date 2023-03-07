@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Fragment, useMemo } from "react";
-=======
 import { Fragment, useEffect, useMemo } from "react";
->>>>>>> e86fc4c94541e8bcee7bcf1d63a96cd0c27641d6
 import { useNavigate } from "react-router-dom";
 // components
 import Category from "./components/Category";

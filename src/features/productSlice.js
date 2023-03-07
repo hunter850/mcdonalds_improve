@@ -32,8 +32,6 @@ export const productSlice = createSlice({
         updateProductValue: (state, action) => {
             state[action.payload.key] = action.payload.value;
         },
-<<<<<<< HEAD
-=======
         resetProduct: (state) => {
             state.breakfast = initialState.breakfast;
             state.combo = initialState.combo;
@@ -52,16 +50,11 @@ export const productSlice = createSlice({
                 state.breakfast = action.payload.breakfast;
                 state.order = action.payload.order;
             });
->>>>>>> e86fc4c94541e8bcee7bcf1d63a96cd0c27641d6
     },
 });
 
 // Action creators are generated for each case reducer function
-<<<<<<< HEAD
-export const { updateProductValue } = productSlice.actions;
-=======
 export const { updateProductValue, resetProduct } = productSlice.actions;
->>>>>>> e86fc4c94541e8bcee7bcf1d63a96cd0c27641d6
 
 export const selectProduct = (state) => state.product;
 

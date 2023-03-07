@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import isMorning from "@/js/isMorning";
 
 export const categorySlice = createSlice({
     name: "category",
     initialState: {
-        value: "breakfast",
+        value: isMorning() ? "breakfast" : "combo",
     },
     reducers: {
         updateCategory: (state, action) => {

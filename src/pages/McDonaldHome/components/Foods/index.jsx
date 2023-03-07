@@ -15,7 +15,6 @@ import {
     ProductList,
     ProductItem,
     ProductCard,
-    ProductCheck,
     StyledCheckbox,
     ProductImageWrap,
     ProductTitle,

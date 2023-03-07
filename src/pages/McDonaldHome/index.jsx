@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Fragment, useMemo } from "react";
+=======
+import { Fragment, useEffect, useMemo } from "react";
+>>>>>>> e86fc4c94541e8bcee7bcf1d63a96cd0c27641d6
 import { useNavigate } from "react-router-dom";
 // components
 import Category from "./components/Category";
@@ -7,7 +11,7 @@ import NextButton from "./components/NextButton";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategory } from "@/features/categorySlice";
-import { selectProduct } from "@/features/productSlice";
+import { getProductData, selectProduct } from "@/features/productSlice";
 import { addProductsToCart } from "@/features/cartSlice";
 // config
 import { categoryImages, categoryWidth } from "@/config/home_config";
@@ -21,19 +25,24 @@ function McDonaldHome() {
         return categoryImages.find((item) => item.value === category).name;
     }, [category]);
     function nextStepHandler() {
-        const selectedProducts = products[category].filter((item) => item.inCart && item.count >= 1);
+        const allProducts = [].concat.apply([], Object.values(products));
+        const selectedProducts = allProducts.filter((item) => item.inCart && item.count >= 1);
         if (selectedProducts.length >= 1) {
             dispatch(addProductsToCart(selectedProducts));
-            switch (category) {
-                case "combo":
-                    navigate("/select_combo", { replace: false });
-                    break;
-                default:
-                    navigate("/select_one_order", { replace: false });
-                    break;
+            sessionStorage.setItem("cart", JSON.stringify(selectedProducts));
+            sessionStorage.setItem("select_history", JSON.stringify(allProducts));
+            const selectedCombo = selectedProducts.filter((item) => item.id >= 1 && item.id <= 10);
+            if (selectedCombo.length >= 1) {
+                navigate("/select_combo", { replace: false });
+            } else {
+                navigate("/check", { replace: false });
             }
         }
     }
+    useEffect(() => {
+        dispatch(getProductData());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     return (
         <Fragment>
             <Category width={categoryWidth} />

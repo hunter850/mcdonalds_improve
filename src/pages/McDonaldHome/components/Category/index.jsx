@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategory, updateCategory } from "@/features/categorySlice";
@@ -29,6 +29,20 @@ function Category(props) {
             });
         };
     }, []);
+    const isMorning = useMemo(() => {
+        const timeNow = new Date(Date.now());
+        const nowHour = timeNow.getHours();
+        const nowMin = timeNow.getMinutes();
+        if (nowHour >= 5 && nowHour <= 10) {
+            if (nowHour === 10 && nowMin > 30) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }, []);
     return (
         <CategoryWrap width={width}>
             <CategoryList>
@@ -41,6 +55,13 @@ function Category(props) {
                             }
                         }}
                         key={item.id}
+                        show={
+                            item.value === "order"
+                                ? true
+                                : isMorning
+                                ? item.value === "breakfast"
+                                : item.value === "combo"
+                        }
                     >
                         <ImageWrap name={item.name}>
                             <img src={item.image} alt={item.name} draggable="false" />

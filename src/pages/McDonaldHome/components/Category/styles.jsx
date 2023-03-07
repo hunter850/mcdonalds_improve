@@ -23,7 +23,7 @@ export const CategoryList = styled.ul`
 export const CategoryItem = styled.li`
     width: 100%;
     padding: 24px 0px;
-    display: flex;
+    display: ${({ show = true }) => (show ? "flex" : "none")};
     justify-content: center;
     align-items: center;
     cursor: pointer;
